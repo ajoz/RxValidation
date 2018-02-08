@@ -4,6 +4,8 @@ import io.github.ajoz.rxvalidation.internal.observers.TestValidationObserver;
 import io.github.ajoz.rxvalidation.internal.operators.ValidationFailure;
 import io.github.ajoz.rxvalidation.internal.operators.ValidationMap;
 import io.github.ajoz.rxvalidation.internal.operators.ValidationSuccess;
+import io.github.ajoz.rxvalidation.internal.operators.ValidationToSingle;
+import io.reactivex.Single;
 import io.reactivex.annotations.CheckReturnValue;
 import io.reactivex.annotations.NonNull;
 import io.reactivex.annotations.SchedulerSupport;
@@ -53,6 +55,12 @@ public abstract class Validation<E, T> implements ValidationSource<E, T> {
     public static <E, T> Validation<E, T> failure(final E error) {
         ObjectHelper.requireNonNull(error, "error is null");
         return new ValidationFailure<E, T>(error);
+    }
+
+    @CheckReturnValue
+    @SchedulerSupport(SchedulerSupport.NONE)
+    public final Single<Verification<E, T>> toSingle() {
+        return new ValidationToSingle<E, T>(this);
     }
 
     @CheckReturnValue
