@@ -7,10 +7,9 @@ import io.reactivex.annotations.Nullable;
 import io.reactivex.disposables.Disposable;
 import io.reactivex.exceptions.Exceptions;
 import io.reactivex.exceptions.ProtocolViolationException;
+import io.reactivex.functions.Function;
 import io.reactivex.internal.disposables.DisposableHelper;
 import io.reactivex.internal.functions.ObjectHelper;
-
-import java.util.function.Function;
 
 public class ValidationMap<E, T, R> extends Validation<E, R> {
 

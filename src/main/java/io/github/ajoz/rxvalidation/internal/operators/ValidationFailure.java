@@ -13,7 +13,7 @@ public class ValidationFailure<E, T> extends Validation<E, T> {
     }
 
     @Override
-    protected void subscribeActual(@NonNull ValidationObserver<? super E, ? super T> observer) {
+    protected void subscribeActual(@NonNull ValidationObserver<E, ? super T> observer) {
         observer.onSubscribe(Disposables.disposed());
         observer.onFailure(error);
     }
