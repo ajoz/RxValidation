@@ -20,6 +20,7 @@ import io.reactivex.disposables.Disposable;
 
 public class TestValidationObserver<E, T>
         implements ValidationObserver<E, T>, Disposable {
+    //TODO: Forwarding test observer
 
     @Override
     public void onSubscribe(final Disposable d) {
